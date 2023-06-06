@@ -1,0 +1,20 @@
+syntax="proto3";
+package pb;
+option java_multiple_files=true;
+import "contato.proto";
+
+message PessoaExiste {
+  bool existe = 1;
+}
+
+message DadosPessoa {
+  uint64 id = 1;
+  string nome = 2;
+  string documento = 3;
+  uint64 enderecoId = 4;
+}
+
+service PessoaService {
+  rpc VerifyExistence(PessoaId) returns (PessoaExiste) {}
+  rpc GetPersonData(PessoaId) returns (DadosPessoa) {}
+}
